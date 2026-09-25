@@ -13,20 +13,27 @@ app = FastAPI(
     debug=settings.debug,
 )
 
-# Expanded CORS origins for new frontends (includes common dev ports)
+# Expanded CORS origins for new frontends (includes common dev ports and Vercel)
 cors_origins = [
+    # Local development
     "http://localhost:3000",  # ser frontend
     "http://localhost:3001",  # ser_dashboard frontend
-    "http://localhost:3002",  # backup port
+    "http://localhost:3002",  # store portal
     "http://localhost:3003",  # backup port
     "http://localhost:3004",  # backup port
-    "http://localhost:3005",  # backup port (ser running here currently)
+    "http://localhost:3005",  # backup port
     "http://127.0.0.1:3000",
     "http://127.0.0.1:3001",
     "http://127.0.0.1:3002",
     "http://127.0.0.1:3003",
     "http://127.0.0.1:3004",
     "http://127.0.0.1:3005",
+    # Vercel deployment
+    "https://*.vercel.app",  # All Vercel preview deployments
+    "https://store-portal.vercel.app",  # Production store portal (update with actual domain)
+    # Add your production domains here
+    # "https://your-store-portal-domain.com",
+    # "https://your-api-domain.com",
 ]
 
 # Add CORS middleware
